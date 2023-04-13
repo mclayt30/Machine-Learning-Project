@@ -28,6 +28,12 @@ model = tf.keras.models.Sequential()
 # model.add(layers.Dropout(0.2))
 # model.add(layers.Dense(10))
 
+# Model 1 with Batch Normalization: 97.53% accuracy, loss = 0.0803
+# model.add(layers.Flatten())
+# model.add(layers.Dense(128, activation = 'relu'))
+# model.add(layers.BatchNormalization())
+# model.add(layers.Dense(10))
+
 # Model 2: 98.26% accuracy, loss = 0.0554
 # model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)))
 # model.add(layers.MaxPooling2D((2, 2)))
@@ -41,60 +47,33 @@ model = tf.keras.models.Sequential()
 # model.add(layers.Flatten())
 # model.add(layers.Dense(10))
 
-# Model 2 with Dropout: 98.11% accuracy, loss = 0.0581
+# Model 2 with Batch Normalization: 97.02% accuracy, loss = 0.1303
+# model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)))
+# model.add(layers.BatchNormalization())
+# model.add(layers.MaxPooling2D((2, 2)))
+# model.add(layers.Flatten())
+# model.add(layers.Dense(10))
+
+# Model 3: 99.05% accuracy, loss = 0.0335
+# model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)))
+# model.add(layers.MaxPooling2D((2, 2)))
+# model.add(layers.Conv2D(32, (3, 3), activation='relu'))
+# model.add(layers.MaxPooling2D((2, 2)))
+# model.add(layers.Flatten())
+# model.add(layers.Dense(128, activation='relu'))
+# model.add(layers.Dense(10))
+
+# Model 3 with Dropout: 99.21% accuracy, loss = 0.0259
 model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)))
-model.add(layers.BatchNormalization())
 model.add(layers.MaxPooling2D((2, 2)))
+model.add(layers.Dropout(0.2))
+model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+model.add(layers.MaxPooling2D((2, 2)))
+model.add(layers.Dropout(0.2))
 model.add(layers.Flatten())
+model.add(layers.Dense(128, activation='relu'))
+model.add(layers.Dropout(0.2))
 model.add(layers.Dense(10))
-
-# MODEL 3 IN POWERPOINT
-# Model 4: 98.89% accuracy, loss = 0.0412
-# model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)))
-# model.add(layers.MaxPooling2D((2, 2)))
-# model.add(layers.Conv2D(64, (3, 3), activation='relu'))
-# model.add(layers.MaxPooling2D((2, 2)))
-# model.add(layers.Conv2D(64, (3, 3), activation='relu'))
-# model.add(layers.Flatten())
-# model.add(layers.Dense(128, activation='relu'))
-# model.add(layers.Dense(10))
-
-# Model 5: 99.2% accuracy, loss = 0.0245
-# model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)))
-# model.add(layers.MaxPooling2D((2, 2)))
-# model.add(layers.Dropout(0.2))
-# model.add(layers.Conv2D(64, (3, 3), activation='relu'))
-# model.add(layers.MaxPooling2D((2, 2)))
-# model.add(layers.Dropout(0.2))
-# model.add(layers.Flatten())
-# model.add(layers.Dense(128, activation='relu'))
-# model.add(layers.Dense(10))
-
-
-
-# Model 6: 99.11% accuracy, loss = 0.0237
-# model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)))
-# model.add(layers.MaxPooling2D((2, 2)))
-# model.add(layers.Dropout(0.2))
-# model.add(layers.Conv2D(64, (3, 3), activation='relu'))
-# model.add(layers.MaxPooling2D((2, 2)))
-# model.add(layers.Dropout(0.2))
-# model.add(layers.Conv2D(64, (3, 3), activation='relu'))
-# model.add(layers.Dropout(0.2))
-# model.add(layers.Flatten())
-# model.add(layers.Dense(10))
-
-# Model 6: 99.23% accuracy, loss = 0.0225
-# model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)))
-# model.add(layers.MaxPooling2D((2, 2)))
-# model.add(layers.Dropout(0.2))
-# model.add(layers.Conv2D(64, (3, 3), activation='relu'))
-# model.add(layers.MaxPooling2D((2, 2)))
-# model.add(layers.Dropout(0.2))
-# model.add(layers.Conv2D(64, (3, 3), activation='relu'))
-# model.add(layers.Flatten())
-# model.add(layers.Dense(128, activation='relu'))
-# model.add(layers.Dense(10))
 
 
 loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits = True)
